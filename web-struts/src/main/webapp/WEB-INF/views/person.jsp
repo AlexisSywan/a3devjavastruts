@@ -52,7 +52,8 @@
                     <td>${person.firstName}</td>
                     <td>${person.lastName}</td>
                     <td>${person.email}</td>
-                    <td>${person.birthDate}</td>
+                    <fmt:parseDate value="${person.birthDate}" type="date" pattern="yyyy-MM-dd" var="birthDate" />
+                    <td><fmt:formatDate value="${birthDate}" type="date" pattern="dd/MM/yyyy" /></td>
                     <td><a href="${context}edit/${person.id}" name="edit">Modifier</a></td>
                     <td><a href="${context}delete/${person.id}" onclick="return confirm('Etes-vous sur de vouloir supprimer ?')">Supprimer</a></td>
                 </tr>
