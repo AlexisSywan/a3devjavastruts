@@ -4,34 +4,57 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
     <package name="default" extends="struts-default">
-        <!-- Action par défaut -->
         <default-action-ref name="index" />
 
-        <!-- Action "index" -->
+        <!-- Results globaux -->
+        <global-results>
+            <result name="error">/jsp/error.jsp</result>
+        </global-results>
+
         <action name="index">
             <result>/jsp/index.jsp</result>
         </action>
 
-        <!-- Action listant les projets -->
         <action name="projet_list"
                 class="org.example.demo.ticket.webapp.action.GestionProjetAction"
                 method="doList">
             <result>/jsp/projet/list.jsp</result>
         </action>
+
+        <action name="utilisateur_detail"
+                class="org.example.demo.ticket.webapp.action.GestionUtilisateurAction"
+                method="doDetail">
+            <result>/jsp/utilisateur/detail.jsp</result>
+        </action>
+
         <!-- Action affichant le détail d'un projet -->
         <action name="projet_detail"
                 class="org.example.demo.ticket.webapp.action.GestionProjetAction"
                 method="doDetail">
-            <result name="success">/jsp/projet/detail.jsp</result>
-            <result name="error">/jsp/error.jsp</result>
+
+            <interceptor-ref name="store">
+                <param name="operationMode">RETRIEVE</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+
+            <result>/jsp/projet/detail.jsp</result>
         </action>
 
-        <!-- Action affichant le détail d'un utilisateur -->
-        <action name="utilisateur_detail"
-                class="org.example.demo.ticket.webapp.action.GestionUtilisateurAction"
-                method="doDetail">
-            <result name="success">/jsp/utilisateur/detail.jsp</result>
-            <result name="error">/jsp/error.jsp</result>
+        <!-- Actions permettant de créer un projet -->
+        <action name="projet_new"
+                class="org.example.demo.ticket.webapp.action.GestionProjetAction"
+                method="doCreate">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+
+            <result name="input">/jsp/projet/new.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">projet_detail</param>
+                <param name="id">${projet.id}</param>
+            </result>
         </action>
     </package>
 </struts>
