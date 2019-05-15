@@ -1,9 +1,11 @@
 package fr.imie.contact.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.jmx.mbeanserver.Repository;
 import fr.imie.contact.DateUtils;
 import fr.imie.contact.entities.Person;
 import fr.imie.contact.repositories.PersonRepository;
+import fr.imie.contact.repositories.PersonRepositoryMock;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -15,22 +17,22 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-//@WebServlet("/person/*")
 public class PersonAction extends ActionSupport {
 
-    @Inject
-    private PersonRepository repository;
+    private PersonRepository repository = new PersonRepositoryMock();
 
     private Person person;
 
     private List<Person> persons;
 
-    public List<Person> getPersons() {
-        return persons;
+    private int id;
+
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setPersons(List<Person> persons) {
-        this.persons = persons;
+    public List<Person> getPersons() {
+        return persons;
     }
 
     public Person getPerson() {
@@ -42,16 +44,15 @@ public class PersonAction extends ActionSupport {
     }
 
     public String save() {
-//        repository.save();
+        repository.save(person);
         return SUCCESS;
     }
     public String deleteById() {
-//        repository.deleteById(id);
+        repository.deleteById(id);
         return SUCCESS;
     }
     public String findAll() {
-//        List<Person> persons = repository.findAll();
-//        request.setAttribute("persons", persons);
+        persons = repository.findAll();
         return SUCCESS;
     }
 

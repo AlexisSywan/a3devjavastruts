@@ -14,9 +14,9 @@
     <s:textfield name="person.firstName" label="Prénom"/>
     <s:textfield name="person.lastName" label="Nom"/>
     <s:textfield name="person.email" label="Email"/>
-    <s:textfield name="person.birthDate" format="dd/MM/yyyy" type="date" label="Date de naissance"/>
+    <s:textfield name="person.birthDate" type="date" label="Date de naissance"/>
     <s:submit />
-
+</s:form>
     <table>
         <thead>
         <tr>
@@ -28,45 +28,32 @@
         </tr>
         </thead>
         <tbody>
-        <%--<c:if test="${empty id}">
-            <tr>
-                <td>*</td>
-                <td><s:textfield name="person.firstName" /></td>
-                <td><s:textfield name="person.lastName" /></td>
-                <td><s:textfield name="person.email" /></td>
-                <td><s:textfield name="person.birthDate" format="dd/MM/yyyy"/></td>
-                <td><s:submit /></td>
-            </tr>
-        </c:if>--%>
 
         <c:forEach var="person" items="${persons}" >
-            <c:if test="${person.id eq id}">
-                <tr>
-                    <td><s:hidden name="person.id" />${person.id}</td>
-                    <td><s:textfield name="person.firstName"/> </td>
-                    <td><s:textfield name="person.lastName" /></td>
-                    <td><s:textfield name="person.email" /></td>
-                    <td><s:datetextfield name="person.birthDate" format="dd/MM/yyyy"/></td>
-                    <td><s:submit /></td>
-                    <td><a href="${context}">Annuler</a></td>
-                </tr>
-            </c:if>
-            <c:if test="${person.id ne id}">
-                <tr>
-                    <td>${person.id}</td>
-                    <td>${person.firstName}</td>
-                    <td>${person.lastName}</td>
-                    <td>${person.email}</td>
-                    <fmt:parseDate value="${person.birthDate}" type="date" pattern="yyyy-MM-dd" var="birthDate" />
-                    <td><fmt:formatDate value="${birthDate}" type="date" pattern="dd/MM/yyyy" /></td>
-                    <td><a href="${context}edit/${person.id}" name="edit">Modifier</a></td>
-                    <td><a href="${context}delete/${person.id}" onclick="return confirm('Etes-vous sur de vouloir supprimer ?')">Supprimer</a></td>
-                </tr>
-            </c:if>
+            <tr>
+                <td>${person.id}</td>
+                <td>${person.firstName}</td>
+                <td>${person.lastName}</td>
+                <td>${person.email}</td>
+                <td><fmt:formatDate value="${person.birthDate}" type="date" pattern="dd/MM/yyyy" /></td>
+                <%--<td>
+                    <s:a action="person_edit">
+                        <s:param name="id" value="${person.id}"/>
+                        Supprimer
+                    </s:a>
+                </td>--%>
+                <td><a href="${context}edit/${person.id}" name="edit">Modifier</a></td>
+
+                <td>
+                    <s:form action="person_delete" onclick="return confirm('Etes-vous sur de vouloir supprimer ?')">
+                        <input type="hidden" name="id" value="${person.id}"/>
+                        <s:submit value="Supprimer"/>
+                    </s:form>
+                </td>
+            </tr>
         </c:forEach>
         </tbody>
     </table>
-</s:form>
 <c:url var="application" value="/" />
 <a href="${application}"> <input type="button" value="Accueil"></a>
 <a href="${application}bankaccount"> <input type="button" value="Comptes Bancaires"></a>

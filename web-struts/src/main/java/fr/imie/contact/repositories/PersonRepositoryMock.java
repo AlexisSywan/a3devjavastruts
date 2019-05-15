@@ -5,20 +5,29 @@ import java.util.*;
 
 public class PersonRepositoryMock extends PersonRepository {
 
-    private List persons = new ArrayList();
+    private static Map persons = new TreeMap();
 
-    public PersonRepositoryMock() {
-        save(new Person("anakin", "skywalker"));
-        save(new Person("luke", "skywalker"));
-        save(new Person("leia", "organa"));
+    private static int autoIncrement = 1;
+
+    static {
+        PersonRepositoryMock mock = new PersonRepositoryMock();
+        mock.save(new Person("anakin", "skywalker"));
+        mock.save(new Person("luke", "skywalker"));
+        mock.save(new Person("leia", "organa"));
     }
 
     public List<Person> findAll() {
-        return persons;
+        return new ArrayList(persons.values());
     }
 
     public void save(Person person) {
-        persons.add(person);
+        persons.put(autoIncrement, person);
+        person.setId(autoIncrement);
+        autoIncrement++;
+    }
+
+    public void deleteById(int id){
+        persons.remove(id);
     }
 
 }
