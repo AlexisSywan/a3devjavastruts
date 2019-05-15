@@ -52,6 +52,9 @@ public class PersonAction extends ActionSupport {
         return SUCCESS;
     }
     public String findAll() {
+        if(id != 0){
+            person = repository.findById(id);
+        }
         persons = repository.findAll();
         return SUCCESS;
     }

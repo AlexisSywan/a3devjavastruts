@@ -11,6 +11,7 @@
 <s:actionerror/>
 <s:actionmessage/>
 <s:form method="post" action="person_save">
+    <s:hidden name="person.id"/>
     <s:textfield name="person.firstName" label="Prénom"/>
     <s:textfield name="person.lastName" label="Nom"/>
     <s:textfield name="person.email" label="Email"/>
@@ -36,16 +37,14 @@
                 <td>${person.lastName}</td>
                 <td>${person.email}</td>
                 <td><fmt:formatDate value="${person.birthDate}" type="date" pattern="dd/MM/yyyy" /></td>
-                <%--<td>
-                    <s:a action="person_edit">
-                        <s:param name="id" value="${person.id}"/>
-                        Supprimer
-                    </s:a>
-                </td>--%>
-                <td><a href="${context}edit/${person.id}" name="edit">Modifier</a></td>
-
                 <td>
-                    <s:form action="person_delete" onclick="return confirm('Etes-vous sur de vouloir supprimer ?')">
+                    <s:form action="person_edit">
+                        <input type="hidden" name="id" value="${person.id}"/>
+                        <s:submit value="Modifier"/>
+                    </s:form>
+                </td>
+                <td>
+                    <s:form action="person_delete">
                         <input type="hidden" name="id" value="${person.id}"/>
                         <s:submit value="Supprimer"/>
                     </s:form>
