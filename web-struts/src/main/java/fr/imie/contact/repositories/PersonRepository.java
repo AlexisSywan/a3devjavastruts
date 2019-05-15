@@ -6,31 +6,13 @@ import javax.ejb.Stateless;
 import javax.persistence.*;
 import java.util.List;
 
-@Stateless
-public class PersonRepository {
+public interface PersonRepository {
 
-    @PersistenceContext
-    private EntityManager em;
+    public abstract void save(Person person);
 
-    public List<Person> findAll() {
-        return em.createQuery("select p from Person p", Person.class).getResultList();
-    }
+    public abstract void deleteById(int id);
 
-    public void save(Person person) {
-        if (person.getId() == null) {
-            em.persist(person);
-        }else {
-            em.merge(person);
-        }
-    }
+    public abstract Person findById(int id);
 
-    public Person findById(int id) {
-        return em.find(Person.class, id);
-    }
-
-    public void deleteById(int id) {
-        Person person = findById(id);
-        em.remove(person);
-    }
-
+    public abstract List<Person> findAll();
 }
