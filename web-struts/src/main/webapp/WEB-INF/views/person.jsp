@@ -8,6 +8,12 @@
 </head>
 <body>
 <s:form method="post" action="person_save">
+    <s:textfield name="person.firstName" label="Prénom"/>
+    <s:textfield name="person.lastName" label="Nom"/>
+    <s:textfield name="person.email" label="Email"/>
+    <s:textfield name="person.birthDate" format="dd/MM/yyyy" label="Date de naissance"/>
+    <s:submit /></td>
+
     <table>
         <thead>
         <tr>
@@ -19,7 +25,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:if test="${empty id}">
+        <%--<c:if test="${empty id}">
             <tr>
                 <td>*</td>
                 <td><s:textfield name="person.firstName" /></td>
@@ -28,7 +34,7 @@
                 <td><s:textfield name="person.birthDate" format="dd/MM/yyyy"/></td>
                 <td><s:submit /></td>
             </tr>
-        </c:if>
+        </c:if>--%>
 
         <c:forEach var="person" items="${persons}" >
             <c:if test="${person.id eq id}">
