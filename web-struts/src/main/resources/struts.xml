@@ -14,8 +14,17 @@
         <action name="person_all" class="fr.imie.contact.actions.PersonAction" method="findAll">
             <result name="success">/WEB-INF/views/person.jsp</result>
         </action>
-        <action name="person_edit" class="fr.imie.contact.actions.PersonAction" method="findAll">
-            <result name="success">/WEB-INF/views/person.jsp</result>
+        <action name="person_edit" class="fr.imie.contact.actions.PersonAction" method="findById" >
+            <result name="success" >/WEB-INF/views/person.jsp</result>
+        </action>
+        <action name="bankaccount_all" class="fr.imie.contact.actions.BankAccountAction" method="findAll">
+            <result name="success">/WEB-INF/views/bankaccount.jsp</result>
+        </action>
+        <action name="bankaccount_save" class="fr.imie.contact.actions.BankAccountAction" method="save">
+            <result name="success" type="redirectAction">
+                bankaccount_all
+            </result>
+            <result name="input">/WEB-INF/views/bankaccount.jsp</result>
         </action>
     </package>
 </struts>

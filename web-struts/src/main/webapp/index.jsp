@@ -12,6 +12,7 @@
   <title>$Title$</title>
 </head>
 <body>
-<s:a action="person_all">person</s:a>
+<s:a action="person_all">Person</s:a>
+<s:a action="bankaccount_all">Bank Acount</s:a>
 </body>
 </html>

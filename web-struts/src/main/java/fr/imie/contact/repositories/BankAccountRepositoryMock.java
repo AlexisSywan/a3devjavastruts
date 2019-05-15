@@ -4,19 +4,28 @@ import fr.imie.contact.entities.*;
 
 import java.util.*;
 
-public class BankAccountRepositoryMock extends BankAccountRepository {
+public class BankAccountRepositoryMock implements BankAccountRepository {
 
-    private List<BankAccount> bankAccounts = new ArrayList();
+    private static Map<Integer,BankAccount> bankAccounts = new TreeMap();
+
+    private static int autoIncrement = 1;
 
     public BankAccountRepositoryMock() {
+
     }
 
     public List<BankAccount> findAll() {
-        return bankAccounts;
+        return new ArrayList(bankAccounts.values());
     }
 
-    public void save(BankAccount entity) {
-        bankAccounts.add(entity);
+    public void save(BankAccount bankAccount) {
+        if(bankAccount.getId() == null) {
+            bankAccounts.put(autoIncrement, bankAccount);
+            bankAccount.setId(autoIncrement);
+            autoIncrement++;
+        } else {
+            bankAccounts.put(bankAccount.getId(), bankAccount);
+        }
     }
 
 }

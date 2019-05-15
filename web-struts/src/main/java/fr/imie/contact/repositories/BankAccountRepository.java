@@ -7,25 +7,10 @@ import javax.persistence.*;
 import java.util.*;
 
 @Stateless
-public class BankAccountRepository {
+public interface BankAccountRepository {
 
-    @PersistenceContext
-    EntityManager em;
+    public abstract void save(BankAccount entity);
 
-    public List<BankAccount> findAll() {
-        return em.createQuery("select ba from BankAccount ba").getResultList();
-    }
-
-    public void save(BankAccount entity) {
-        if (entity.getId() == null) {
-            em.persist(entity);
-        }else {
-            em.merge(entity);
-        }
-    }
-
-    public BankAccount findById(Integer id) {
-        return em.find(BankAccount.class, id);
-    }
+    public abstract List<BankAccount> findAll();
 
 }
