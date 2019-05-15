@@ -6,7 +6,6 @@ import javax.ejb.*;
 import javax.persistence.*;
 import java.util.*;
 
-@Stateless
 public interface BankAccountRepository {
 
     public abstract void save(BankAccount entity);
