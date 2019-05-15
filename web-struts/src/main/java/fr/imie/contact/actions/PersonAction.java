@@ -21,6 +21,18 @@ public class PersonAction extends ActionSupport {
     @Inject
     private PersonRepository repository;
 
+    private Person person;
+
+    private List<Person> persons;
+
+    public List<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<Person> persons) {
+        this.persons = persons;
+    }
+
     public Person getPerson() {
         return person;
     }
@@ -28,8 +40,6 @@ public class PersonAction extends ActionSupport {
     public void setPerson(Person person) {
         this.person = person;
     }
-
-    private Person person;
 
     public String save() {
 //        repository.save();
@@ -42,7 +52,6 @@ public class PersonAction extends ActionSupport {
     public String findAll() {
 //        List<Person> persons = repository.findAll();
 //        request.setAttribute("persons", persons);
-//        request.getRequestDispatcher("/WEB-INF/views/person.jsp").forward(request, response);
         return SUCCESS;
     }
 
