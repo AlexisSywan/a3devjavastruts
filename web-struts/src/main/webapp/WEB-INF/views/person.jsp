@@ -7,11 +7,13 @@
     <title></title>
 </head>
 <body>
+<s:actionerror/>
+<s:actionmessage/>
 <s:form method="post" action="person_save">
     <s:textfield name="person.firstName" label="Prénom"/>
     <s:textfield name="person.lastName" label="Nom"/>
     <s:textfield name="person.email" label="Email"/>
-    <s:textfield name="person.birthDate" format="dd/MM/yyyy" label="Date de naissance"/>
+    <s:textfield name="person.birthDate" format="dd/MM/yyyy" type="date" label="Date de naissance"/>
     <s:submit /></td>
 
     <table>

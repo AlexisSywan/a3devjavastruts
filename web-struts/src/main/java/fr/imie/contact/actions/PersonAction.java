@@ -32,6 +32,7 @@ public class PersonAction extends ActionSupport {
     private Person person;
 
     public String save() {
+        System.out.println(person.getFirstName());
         return SUCCESS;
     }
     public String deleteById() {
