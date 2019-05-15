@@ -1,13 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
     <title></title>
 </head>
 <body>
-<c:url var="context" value="/person/" />
-<form method="post" action="${context}save">
+<s:form method="post" action="person_save">
     <table>
         <thead>
         <tr>
@@ -35,15 +35,15 @@
         <c:forEach var="person" items="${persons}" >
             <c:if test="${person.id eq id}">
                 <tr>
-                    <td><input type="hidden" name="id" value="${person.id}"></td>
-                    <td><input name="firstName" value="${person.firstName}"></td>
-                    <td><input name="lastName" value="${person.lastName}"></td>
-                    <td><input name="email" value="${person.email}"></td>
+                    <td><s:hidden name="id" />${person.id}</td>
+                    <td><s:textfield name="firstName"/> </td>
+                    <td><s:textfield name="lastName" /></td>
+                    <td><s:textfield name="email" /></td>
                     <fmt:parseDate value="${person.birthDate}" pattern="yyyy-MM-dd" var="parsedDate" type="date"/>
                     <fmt:formatDate value="${parsedDate}" type="date" pattern="dd/MM/yyyy" var="goodDate"/>
-                    <td><input name="birthDate" value="${goodDate}"></td>
-                    <td><input type="submit" /></td>
-                    <td><a href="${context}" name="modify">Annuler</a></td>
+                    <td><s:datetextfield name="birthDate" format="dd/MM/yyyy"/></td>
+                    <td><s:submit type="submit" /></td>
+                    <td><a href="${context}">Annuler</a></td>
                 </tr>
             </c:if>
             <c:if test="${person.id ne id}">
@@ -61,7 +61,7 @@
         </c:forEach>
         </tbody>
     </table>
-</form>
+</s:form>
 <c:url var="application" value="/" />
 <a href="${application}"> <input type="button" value="Accueil"></a>
 <a href="${application}bankaccount"> <input type="button" value="Comptes Bancaires"></a>

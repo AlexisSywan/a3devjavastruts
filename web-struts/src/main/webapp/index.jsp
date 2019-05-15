@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Souheil SULTAN
@@ -11,11 +12,6 @@
   <title>$Title$</title>
 </head>
 <body>
-HELLO A3 DEV
-<br><br>
-<c:url var="application" value="/" />
-<a href="${application}bankaccount"> <input type="button" value="Comptes Bancaires"></a>
-<a href="${application}person"> <input type="button" value="Personnes"></a>
-<a href="${application}transfer"> <input type="button" value="Virement"></a>
+<s:a action="person_all">person</s:a>
 </body>
 </html>

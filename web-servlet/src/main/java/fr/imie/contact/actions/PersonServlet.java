@@ -1,4 +1,4 @@
-package fr.imie.contact.servlets;
+package fr.imie.contact.actions;
 
 import fr.imie.contact.DateUtils;
 import fr.imie.contact.entities.Person;

@@ -1,10 +1,7 @@
-package fr.imie.contact.servlets;
+package fr.imie.contact.actions;
 
-import com.sun.deploy.perf.PerfRollup;
-import fr.imie.contact.*;
 import fr.imie.contact.entities.*;
 import fr.imie.contact.repositories.*;
-import sun.invoke.empty.Empty;
 
 import javax.inject.*;
 import javax.servlet.*;
@@ -12,11 +9,10 @@ import javax.servlet.annotation.*;
 import javax.servlet.http.*;
 import java.io.*;
 import java.math.BigDecimal;
-import java.time.*;
 import java.util.*;
 
 @WebServlet("/transfer/*")
-public class TransferServlet extends HttpServlet {
+public class TransferAction extends HttpServlet {
 
     @Inject
     private BankAccountRepository bankaccountrepository;
