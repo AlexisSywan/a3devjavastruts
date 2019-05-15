@@ -5,6 +5,7 @@
 <html>
 <head>
     <title></title>
+    <s:head/>
 </head>
 <body>
 <s:actionerror/>

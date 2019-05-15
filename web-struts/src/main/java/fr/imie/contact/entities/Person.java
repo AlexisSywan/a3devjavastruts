@@ -3,7 +3,7 @@ package fr.imie.contact.entities;
 import javax.persistence.*;
 import java.time.*;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class Person {
@@ -17,7 +17,7 @@ public class Person {
 
     private String email;
 
-    private LocalDate birthDate;
+    private Date birthDate;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
     private List<BankAccount> accounts = new ArrayList<BankAccount>();
@@ -54,11 +54,11 @@ public class Person {
         this.email = email;
     }
 
-    public LocalDate getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
