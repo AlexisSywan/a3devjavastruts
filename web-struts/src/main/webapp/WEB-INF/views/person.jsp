@@ -19,30 +19,26 @@
         </tr>
         </thead>
         <tbody>
-        <c:if test="${id eq null}">
+        <c:if test="${empty id}">
             <tr>
                 <td>*</td>
-                <td><input name="firstName" /></td>
-                <td><input name="lastName" /></td>
-                <td><input name="email" /></td>
-                <td><input name="birthDate" /></td>
-                <td><input type="submit" /></td>
+                <td><s:textfield name="person.firstName" /></td>
+                <td><s:textfield name="person.lastName" /></td>
+                <td><s:textfield name="person.email" /></td>
+                <td><s:textfield name="person.birthDate" format="dd/MM/yyyy"/></td>
+                <td><s:submit /></td>
             </tr>
-        </c:if>
-        <c:if test="${person.id ne id}">
         </c:if>
 
         <c:forEach var="person" items="${persons}" >
             <c:if test="${person.id eq id}">
                 <tr>
-                    <td><s:hidden name="id" />${person.id}</td>
-                    <td><s:textfield name="firstName"/> </td>
-                    <td><s:textfield name="lastName" /></td>
-                    <td><s:textfield name="email" /></td>
-                    <fmt:parseDate value="${person.birthDate}" pattern="yyyy-MM-dd" var="parsedDate" type="date"/>
-                    <fmt:formatDate value="${parsedDate}" type="date" pattern="dd/MM/yyyy" var="goodDate"/>
-                    <td><s:datetextfield name="birthDate" format="dd/MM/yyyy"/></td>
-                    <td><s:submit type="submit" /></td>
+                    <td><s:hidden name="person.id" />${person.id}</td>
+                    <td><s:textfield name="person.firstName"/> </td>
+                    <td><s:textfield name="person.lastName" /></td>
+                    <td><s:textfield name="person.email" /></td>
+                    <td><s:datetextfield name="person.birthDate" format="dd/MM/yyyy"/></td>
+                    <td><s:submit /></td>
                     <td><a href="${context}">Annuler</a></td>
                 </tr>
             </c:if>
