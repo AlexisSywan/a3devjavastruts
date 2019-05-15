@@ -14,7 +14,7 @@
     <s:textfield name="person.lastName" label="Nom"/>
     <s:textfield name="person.email" label="Email"/>
     <s:textfield name="person.birthDate" format="dd/MM/yyyy" type="date" label="Date de naissance"/>
-    <s:submit /></td>
+    <s:submit />
 
     <table>
         <thead>
