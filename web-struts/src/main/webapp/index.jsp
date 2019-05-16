@@ -14,6 +14,6 @@
 <body>
 <s:a action="person_all">Personnes</s:a>
 <s:a action="bankaccount_all">Comptes Bancaires</s:a>
-<s:a action="transfer_all">Transfert</s:a>
+<s:a action="transfer_all">Virement</s:a>
 </body>
 </html>
