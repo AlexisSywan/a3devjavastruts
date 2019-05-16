@@ -1,7 +1,7 @@
 package fr.imie.contact.entities;
 
 import javax.persistence.*;
-import java.math.*;
+import java.math.BigDecimal;
 
 @Entity
 public class BankAccount {

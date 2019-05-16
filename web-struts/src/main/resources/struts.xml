@@ -26,5 +26,15 @@
             </result>
             <result name="input">/WEB-INF/views/bankaccount.jsp</result>
         </action>
+
+        <action name="transfer_all" class="fr.imie.contact.actions.TransferAction" method="findAll">
+            <result name="success">/WEB-INF/views/transfer.jsp</result>
+        </action>
+        <action name="transfer_save" class="fr.imie.contact.actions.TransferAction" method="save">
+            <result name="success" type="redirectAction">
+                transfer_all
+            </result>
+            <result name="input">/WEB-INF/views/transfer.jsp</result>
+        </action>
     </package>
 </struts>

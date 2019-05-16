@@ -1,49 +1,92 @@
 package fr.imie.contact.actions;
 
-import fr.imie.contact.entities.*;
-import fr.imie.contact.repositories.*;
+import com.opensymphony.xwork2.ActionSupport;
+import fr.imie.contact.entities.BankAccount;
+import fr.imie.contact.entities.Person;
+import fr.imie.contact.repositories.BankAccountRepositoryMock;
+import fr.imie.contact.repositories.PersonRepositoryMock;
 
-import javax.inject.*;
-import javax.servlet.*;
-import javax.servlet.annotation.*;
-import javax.servlet.http.*;
-import java.io.*;
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.List;
 
 //@WebServlet("/transfer/*")
-public class TransferAction extends HttpServlet {
+public class TransferAction extends ActionSupport {
 
-    private BankAccountRepository bankaccountrepository;
+    private BankAccountRepositoryMock bankAccountRepositoryMock = new BankAccountRepositoryMock();
+    private PersonRepositoryMock personRepositoryMock = new PersonRepositoryMock();
 
-    private PersonRepository personrepository;
+    private BankAccount bankAccountDebit;
+    private BankAccount bankAccountCredit;
+    private Person person;
 
-//    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//
-//        if (request.getMethod().equalsIgnoreCase("post")){
-//
-//            BigDecimal ammount = new BigDecimal(request.getParameter("ammount"));
-//
-//            Integer idDebit = Integer.parseInt(request.getParameter("debitAccount"));
-//            Integer idCredit = Integer.parseInt(request.getParameter("creditAccount"));
-//
-//            BankAccount debitAccount = bankaccountrepository.findById(idDebit);
-//            BankAccount creditAccount = bankaccountrepository.findById(idCredit);
-//
-//            debitAccount.setBalance(debitAccount.getBalance().subtract(ammount));
-//            creditAccount.setBalance(creditAccount.getBalance().add(ammount));
-//
-//            bankaccountrepository.save(debitAccount);
-//            bankaccountrepository.save(creditAccount);
-//        }
-//
-//        List<BankAccount> accounts = bankaccountrepository.findAll();
-//        List<Person> persons = personrepository.findAll();
-//
-//        request.setAttribute("accounts", accounts);
-//        request.setAttribute("persons", persons);
-//
-//        request.getRequestDispatcher("/WEB-INF/views/transfer.jsp").forward(request, response);
-//    }
+    public Integer getDebit() {
+        return debit;
+    }
+
+    public void setDebit(Integer debit) {
+        this.debit = debit;
+    }
+
+    public Integer getCredit() {
+        return credit;
+    }
+
+    public void setCredit(Integer credit) {
+        this.credit = credit;
+    }
+
+    private Integer debit;
+    private Integer credit;
+
+    private List<Person> persons;
+    private List<BankAccount> bankAccounts;
+
+    public BigDecimal getAmmount() {
+        return ammount;
+    }
+
+    public void setAmmount(BigDecimal ammount) {
+        this.ammount = ammount;
+    }
+
+    private BigDecimal ammount;
+
+    public List<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<Person> persons) {
+        this.persons = persons;
+    }
+
+    public List<BankAccount> getBankAccounts() {
+        return bankAccounts;
+    }
+
+    public void setBankAccounts(List<BankAccount> bankAccounts) {
+        this.bankAccounts = bankAccounts;
+    }
+
+    public String findAll () {
+        persons = personRepositoryMock.findAll();
+        bankAccounts = bankAccountRepositoryMock.findAll();
+        //request.setAttribute("persons", persons);
+        //request.getRequestDispatcher("/WEB-INF/views/person.jsp").forward(request, response);
+        return SUCCESS;
+    }
+
+
+    public String save() {
+        System.out.println(credit);
+        System.out.println(debit);
+        bankAccountCredit = bankAccountRepositoryMock.findById(credit);
+        bankAccountDebit = bankAccountRepositoryMock.findById(debit);
+        bankAccountDebit.setBalance(bankAccountDebit.getBalance().subtract(ammount));
+        bankAccountCredit.setBalance(bankAccountCredit.getBalance().add(ammount));
+        bankAccountRepositoryMock.save(bankAccountCredit);
+        bankAccountRepositoryMock.save(bankAccountDebit);
+
+        return SUCCESS;
+    }
 
 }

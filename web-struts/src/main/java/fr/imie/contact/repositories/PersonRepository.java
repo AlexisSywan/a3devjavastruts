@@ -2,8 +2,6 @@ package fr.imie.contact.repositories;
 
 import fr.imie.contact.entities.Person;
 
-import javax.ejb.Stateless;
-import javax.persistence.*;
 import java.util.List;
 
 public interface PersonRepository {

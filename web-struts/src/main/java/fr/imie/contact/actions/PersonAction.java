@@ -1,20 +1,10 @@
 package fr.imie.contact.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.jmx.mbeanserver.Repository;
-import fr.imie.contact.DateUtils;
 import fr.imie.contact.entities.Person;
 import fr.imie.contact.repositories.PersonRepository;
 import fr.imie.contact.repositories.PersonRepositoryMock;
 
-import javax.inject.Inject;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.time.LocalDate;
 import java.util.List;
 
 public class PersonAction extends ActionSupport {

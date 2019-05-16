@@ -1,9 +1,9 @@
 package fr.imie.contact.entities;
 
 import javax.persistence.*;
-import java.time.*;
 import java.util.ArrayList;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Person {

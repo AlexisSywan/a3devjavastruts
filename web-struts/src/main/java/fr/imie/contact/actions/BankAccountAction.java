@@ -1,16 +1,12 @@
 package fr.imie.contact.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
-import fr.imie.contact.entities.*;
-import fr.imie.contact.repositories.*;
+import fr.imie.contact.entities.BankAccount;
+import fr.imie.contact.entities.Person;
+import fr.imie.contact.repositories.BankAccountRepositoryMock;
+import fr.imie.contact.repositories.PersonRepositoryMock;
 
-import javax.inject.*;
-import javax.servlet.*;
-import javax.servlet.annotation.*;
-import javax.servlet.http.*;
-import java.io.*;
-import java.math.BigDecimal;
-import java.util.*;
+import java.util.List;
 
 //@WebServlet("/bankaccount/*")
 public class BankAccountAction extends ActionSupport {

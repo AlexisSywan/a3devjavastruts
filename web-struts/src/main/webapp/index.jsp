@@ -12,7 +12,8 @@
   <title>$Title$</title>
 </head>
 <body>
-<s:a action="person_all">Person</s:a>
-<s:a action="bankaccount_all">Bank Acount</s:a>
+<s:a action="person_all">Personnes</s:a>
+<s:a action="bankaccount_all">Comptes Bancaires</s:a>
+<s:a action="transfer_all">Transfert</s:a>
 </body>
 </html>
