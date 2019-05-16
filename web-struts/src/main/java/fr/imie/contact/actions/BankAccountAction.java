@@ -77,10 +77,6 @@ public class BankAccountAction extends ActionSupport {
         return SUCCESS;
     }
 
-//    public String deleteById () {
-//        bankAccountRepositoryMock.deleteById(id);
-//        return SUCCESS;
-//    }
 
     public String findAll () {
         persons = personRepositoryMock.findAll();
@@ -89,28 +85,5 @@ public class BankAccountAction extends ActionSupport {
         //request.getRequestDispatcher("/WEB-INF/views/person.jsp").forward(request, response);
         return SUCCESS;
     }
-
-//    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//
-//        if (request.getMethod().equalsIgnoreCase("post")){
-//            BankAccount account = new BankAccount();
-//
-//            BigDecimal balance = new BigDecimal(request.getParameter("balance"));
-//            Integer id = Integer.parseInt(request.getParameter("owner"));
-//            Person owner = personrepository.findById(id);
-//
-//            account.setBalance(balance);
-//            account.setOwner(owner);
-//            bankaccountrepository.save(account);
-//        }
-//
-//        List<BankAccount> accounts = bankaccountrepository.findAll();
-//        List<Person> persons = personrepository.findAll();
-//
-//        request.setAttribute("accounts", accounts);
-//        request.setAttribute("persons", persons);
-//
-//        request.getRequestDispatcher("/WEB-INF/views/bankaccount.jsp").forward(request, response);
-//    }
 
 }

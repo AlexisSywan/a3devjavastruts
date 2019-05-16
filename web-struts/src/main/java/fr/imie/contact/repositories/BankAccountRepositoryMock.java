@@ -19,6 +19,10 @@ public class BankAccountRepositoryMock implements BankAccountRepository {
     }
 
     public void save(BankAccount bankAccount) {
+        Integer owner_id = bankAccount.getOwner().getId();
+        Person owner = new PersonRepositoryMock().findById(owner_id);
+        bankAccount.setOwner(owner);
+
         if(bankAccount.getId() == null) {
             bankAccounts.put(autoIncrement, bankAccount);
             bankAccount.setId(autoIncrement);
