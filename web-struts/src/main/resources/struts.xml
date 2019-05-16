@@ -5,28 +5,35 @@
 <struts>
     <package name="default" extends="struts-default">
         <action name="person_save" class="fr.imie.contact.actions.PersonAction" method="save">
-            <result name="input">/WEB-INF/views/person.jsp</result>
+            <interceptor-ref name="store"><param name="operationMode">STORE</param></interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+            <result name="input" type="redirectAction" >person_all</result>
             <result name="success" type="redirectAction">person_all</result>
         </action>
         <action name="person_delete" class="fr.imie.contact.actions.PersonAction" method="deleteById">
             <result name="success" type="redirectAction">person_all</result>
         </action>
         <action name="person_all" class="fr.imie.contact.actions.PersonAction" method="findAll">
+            <interceptor-ref name="store"><param name="operationMode">RETRIEVE</param></interceptor-ref>
+            <interceptor-ref name="defaultStack" />
             <result name="success">/WEB-INF/views/person.jsp</result>
         </action>
         <action name="person_edit" class="fr.imie.contact.actions.PersonAction" method="findById" >
             <result name="success" >/WEB-INF/views/person.jsp</result>
         </action>
         <action name="bankaccount_all" class="fr.imie.contact.actions.BankAccountAction" method="findAll">
+            <interceptor-ref name="store"><param name="operationMode">RETRIEVE</param></interceptor-ref>
+            <interceptor-ref name="defaultStack" />
             <result name="success">/WEB-INF/views/bankaccount.jsp</result>
         </action>
         <action name="bankaccount_save" class="fr.imie.contact.actions.BankAccountAction" method="save">
+            <interceptor-ref name="store"><param name="operationMode">STORE</param></interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+            <result name="input" type="redirectAction" >bankaccount_all</result>
             <result name="success" type="redirectAction">
                 bankaccount_all
             </result>
-            <result name="input">/WEB-INF/views/bankaccount.jsp</result>
         </action>
-
         <action name="transfer_all" class="fr.imie.contact.actions.TransferAction" method="findAll">
             <result name="success">/WEB-INF/views/transfer.jsp</result>
         </action>
