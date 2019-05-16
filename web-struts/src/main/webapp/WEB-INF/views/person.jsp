@@ -55,7 +55,7 @@
     </table>
 <c:url var="application" value="/" />
 <a href="${application}"> <input type="button" value="Accueil"></a>
-<a href="${application}bankaccount"> <input type="button" value="Comptes Bancaires"></a>
-<a href="${application}transfer"> <input type="button" value="Virement"> </a>
+<a href="${application}bankaccount_all"> <input type="button" value="Comptes Bancaires"></a>
+<a href="${application}transfer_all"> <input type="button" value="Virement"> </a>
 </body>
 </html>

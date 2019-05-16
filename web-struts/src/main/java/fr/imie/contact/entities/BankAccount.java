@@ -19,6 +19,11 @@ public class BankAccount {
     public BankAccount() {
     }
 
+    public BankAccount(Person owner, BigDecimal balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+
     public BigDecimal getBalance() {
         return balance;
     }

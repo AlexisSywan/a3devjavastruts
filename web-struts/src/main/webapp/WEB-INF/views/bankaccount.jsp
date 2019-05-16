@@ -35,5 +35,9 @@
     </c:forEach>
     </tbody>
 </table>
+<c:url var="application" value="/" />
+<a href="${application}"> <input type="button" value="Accueil"></a>
+<a href="${application}person_all"> <input type="button" value="Personnes"></a>
+<a href="${application}transfer_all"> <input type="button" value="Virement"> </a>
 </body>
 </html>

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.stream.Collector;
+import java.math.*;
 
 public class BankAccountRepositoryMock implements BankAccountRepository {
 
@@ -15,8 +15,11 @@ public class BankAccountRepositoryMock implements BankAccountRepository {
 
     private static int autoIncrement = 1;
 
-    public BankAccountRepositoryMock() {
-
+    static {
+        PersonRepositoryMock pMock = new PersonRepositoryMock();
+        BankAccountRepositoryMock baMock = new BankAccountRepositoryMock();
+        baMock.save(new BankAccount(pMock.findById(1), new BigDecimal(1000)));
+        baMock.save(new BankAccount(pMock.findById(2), new BigDecimal(1000)));
     }
 
     public List<BankAccount> findAll() {
